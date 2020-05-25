@@ -2,9 +2,9 @@
 
 namespace Webkul\Theme;
 
-use Webkul\Theme\Facades\Themes;
 use Illuminate\Support\Arr;
 use Illuminate\View\FileViewFinder;
+use Webkul\Theme\Facades\Themes;
 
 class ThemeViewFinder extends FileViewFinder
 {
@@ -24,7 +24,7 @@ class ThemeViewFinder extends FileViewFinder
 
             try {
                 return $this->findInPaths($view, $paths);
-            } catch(\Exception $e) {
+            } catch (\Exception $e) {
                 if ($namespace != 'shop') {
                     if (strpos($view, 'shop.') !== false) {
                         $view = str_replace('shop.', 'shop.' . Themes::current()->code . '.', $view);
@@ -44,7 +44,7 @@ class ThemeViewFinder extends FileViewFinder
      */
     public function addThemeNamespacePaths($namespace)
     {
-        if (! isset($this->hints[$namespace])) {
+        if (!isset($this->hints[$namespace])) {
             return [];
         }
 
